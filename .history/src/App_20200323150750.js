@@ -37,15 +37,12 @@ function App() {
                 <input type="text" className="form-control" id="validationDefault05" required />
               </div>
             </div>
-            <div className="row">
-              <div className="col-md-6">
-                <div className="form-group">
-                  <label className="form-label">¿Ida y vuelta?</label><br />
-                  <input className="select mr-1" type="radio" name="idavuelta" value="ida" required />
-                  <i className="si mr-3">Si</i>
-                  <input className="select mr-1" type="radio" name="idavuelta" value="vuelta" required />
-                  <i className="no">No</i>
-                </div>
+            <div className="form-group">
+              <div className="form-check">
+                <input className="form-check-input" type="radio" value="" id="invalidCheck2" required />
+                <label className="form-check-label" for="invalidCheck2">
+                  Agree to terms and conditions
+                </label>
               </div>
             </div>
             <button className="btn btn-primary" type="submit">Submit form</button>

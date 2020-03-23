@@ -37,17 +37,17 @@ function App() {
                 <input type="text" className="form-control" id="validationDefault05" required />
               </div>
             </div>
-            <div className="row">
-              <div className="col-md-6">
-                <div className="form-group">
-                  <label className="form-label">¿Ida y vuelta?</label><br />
-                  <input className="select mr-1" type="radio" name="idavuelta" value="ida" required />
-                  <i className="si mr-3">Si</i>
-                  <input className="select mr-1" type="radio" name="idavuelta" value="vuelta" required />
-                  <i className="no">No</i>
-                </div>
-              </div>
-            </div>
+           <div className="row">
+           <div className="col-md-6">
+                                  <div className="form-group">
+                                    <label className="form-label">¿Ida y vuelta?</label><br />
+                                    <input className="select mr-1" type="radio" name="idavuelta" value="ida" required />
+                                    <i className="si mr-3">Si</i>
+                                    <input className="select mr-1" type="radio" name="idavuelta" value="vuelta" required />
+                                    <i className="no">No</i>
+                                  </div>
+                                </div>
+           </div>
             <button className="btn btn-primary" type="submit">Submit form</button>
           </form>
         </div>

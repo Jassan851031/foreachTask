@@ -6,12 +6,6 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-
- // Add js files
- import 'jquery';
- import 'popper.js';
- import 'bootstrap';
-
 ReactDOM.render(
   <React.StrictMode>
     <App />
