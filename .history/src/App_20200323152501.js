@@ -56,8 +56,8 @@ function App() {
                       </div>
                     </div>
                     <div className="card-footer text-right">
-                      <button className="btn btn-secondary mr-1">Cancelar</button>
-                      <button className="btn btn-primary" type="submit">Guardar</button>
+                      <button className="btn btn-secondary mr-1">cancelar</button>
+                      <button className="btn btn-primary" type="submit">Submit form</button>
                     </div>
                   </form>
                 </div>
