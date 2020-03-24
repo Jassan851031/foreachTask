@@ -20,8 +20,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(store.path + '/resumen')
 					.then(resp => resp.json())
 					.then(data => {
-						console.log(data);
 						setStore({ resumen: data });
+						//console.log(data);
+						console.log(store.resumen);
 					})
 					.catch(err => console.log(err));
 			},

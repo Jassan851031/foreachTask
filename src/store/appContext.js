@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import getState from './flux';
 
-// Don't change, here is where we initialize our context, by default its just going to be Null.
+// Here is where we initialize our context, by default its just going to be Null.
 export const Context = React.createContext(null);
 
 // This function injects the global store to any view/component where you want to use it
@@ -20,6 +20,11 @@ const injectContext = PassedComponent => {
                     })
             });
 		}
+
+		componentDidMount() {
+
+                this.state.actions.getResumen();
+        }
 		
 		render() {
             // the initial value for the context its not null anymore, but the current state of this component,
