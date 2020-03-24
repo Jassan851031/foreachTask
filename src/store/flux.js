@@ -2,14 +2,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			path: 'http://localhost:5000',
-			//Your data structures
-			// inicio: [],
-			// final: [],
-			// tipo_transp: [],
-			// km: [],
-			// nombre: [],
-			// redondo: false,
-			// emision: "",
+			punto_partida: "",
+			punto_termino: "",
+			km: "",
+			nombre: "",
 			resumen: []
 		},
 		actions: {
@@ -27,31 +23,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => console.log(err));
 			},
 
-			// addViaje: () => {
-            //     const store = getStore();
-            //     const data = {
-            //         description: store.description,
-            //         icon: store.icon,
-            //     }
-            //     fetch(store.path + '/api/categories', {
-            //         method: 'POST',
-            //         body: JSON.stringify(data),
-            //         headers: {
-            //             'Content-Type': 'application/json',
-            //             'Authorization': 'Bearer ' + store.currentUser.access_token
-            //         }
+			addViaje: () => {
+                const store = getStore();
+                const data = {
+                    punto_partida: store.punto_partida,
+					punto_termino: store.punto_termino,
+					tipo_transporte: store.tipo_transporte,
+					km: store.km,
+					nombre: store.nombre,
+                }
+                fetch(store.path + '/agregar', {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
 
-            //     })
-            //         .then(resp => resp.json())
-            //         .then(data => {
-            //             setStore({
-            //                 name: '',
-            //                 description: '',
-            //                 icon: '',
-            //             });
-            //             getActions().getCategories();
-            //         })
-            // },
+                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        setStore({
+                            name: '',
+                            description: '',
+                            icon: '',
+                        });
+                    })
+            },
+
 		}
 	};
 };
