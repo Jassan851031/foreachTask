@@ -6,11 +6,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			punto_termino: "",
 			km: "",
 			nombre: "",
+			ida_vuelta: false,
+			transporte: [],
 			resumen: []
 		},
 		actions: {
-			//(Arrow) Functions that update the Store
-			// Remember to use the scope: scope.state.store & scope.setState()
+
 			getResumen: () => {
 				const store = getStore();
 				fetch(store.path + '/resumen')
@@ -18,37 +19,63 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => {
 						setStore({ resumen: data });
 						//console.log(data);
-						console.log(store.resumen);
+						//console.log(store.resumen);
 					})
 					.catch(err => console.log(err));
 			},
 
-			addViaje: () => {
+			getTransporte: () => {
                 const store = getStore();
-                const data = {
-                    punto_partida: store.punto_partida,
+                fetch(store.path + '/transporte', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                })
+                    .then(resp => resp.json())
+                    .then(data => {
+						setStore({ transporte: data });
+						//console.log(store.transporte)
+                    })
+            },
+
+			addViaje: () => {
+				const store = getStore();
+				const data = {
+					punto_partida: store.punto_partida,
 					punto_termino: store.punto_termino,
 					tipo_transporte: store.tipo_transporte,
 					km: store.km,
 					nombre: store.nombre,
-                }
-                fetch(store.path + '/agregar', {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    headers: {
-                        'Content-Type': 'application/json',
-                    }
+					ida_vuelta: store.ida_vuelta,
+				}
+				fetch(store.path + '/agregar-viaje', {
+					method: 'POST',
+					body: JSON.stringify(data),
+					headers: {
+						'Content-Type': 'application/json',
+					}
+				})
+					.then(resp => resp.json())
+					.then(data => {
+						setStore({
+							punto_partida: '',
+							punto_termino: '',
+							tipo_transporte: '',
+							km: '',
+							nombre: '',
+							ida_vuelta: '',
+						});
+						getActions().getResumen();
+					})
+			},
 
-                })
-                    .then(resp => resp.json())
-                    .then(data => {
-                        setStore({
-                            name: '',
-                            description: '',
-                            icon: '',
-                        });
-                    })
-            },
+			handleChange: e => {
+
+				setStore({
+					[e.target.name]: e.target.value
+				});
+			},
 
 		}
 	};

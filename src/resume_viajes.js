@@ -3,7 +3,7 @@ import { Context } from './store/appContext';
 
 
 
-const Resumen = (props) => {
+const Resumen = () => {
     const { store } = useContext(Context);
     //console.log(store.resumen.length)
 

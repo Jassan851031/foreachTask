@@ -23,7 +23,8 @@ const injectContext = PassedComponent => {
 
 		componentDidMount() {
 
-                this.state.actions.getResumen();
+				this.state.actions.getResumen();
+				this.state.actions.getTransporte();
         }
 		
 		render() {
