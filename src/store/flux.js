@@ -35,9 +35,15 @@ const getState = ({ getStore, getActions, setStore }) => {
                     .then(resp => resp.json())
                     .then(data => {
 						setStore({ transporte: data });
-						//console.log(store.transporte)
+						//console.log('wewe');
                     })
-            },
+			},
+			
+			handleChange: e => {
+				setStore({
+					[e.target.name]: e.target.value
+				});
+			},
 
 			addViaje: () => {
 				const store = getStore();
@@ -47,7 +53,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					tipo_transporte: store.tipo_transporte,
 					km: store.km,
 					nombre: store.nombre,
-					ida_vuelta: store.ida_vuelta,
+					ida_vuelta: store.ida_vuelta
 				}
 				fetch(store.path + '/agregar-viaje', {
 					method: 'POST',
@@ -56,27 +62,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 						'Content-Type': 'application/json',
 					}
 				})
-					.then(resp => resp.json())
-					.then(data => {
-						setStore({
-							punto_partida: '',
-							punto_termino: '',
-							tipo_transporte: '',
-							km: '',
-							nombre: '',
-							ida_vuelta: '',
-						});
-						getActions().getResumen();
+				.then(resp => resp.json())
+				.then(() => {
+					setStore({
+						punto_partida: '',
+						punto_termino: '',
+						tipo_transporte: '',
+						km: '',
+						nombre: '',
+						ida_vuelta: '',
+					});
+					//console.log('wewe');
+					//getActions().getResumen();
 					})
 			},
-
-			handleChange: e => {
-
-				setStore({
-					[e.target.name]: e.target.value
-				});
-			},
-
 		}
 	};
 };

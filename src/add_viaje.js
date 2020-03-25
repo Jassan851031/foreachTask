@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import { Context } from './store/appContext';
 
-const agregar = () => {
+const Agregar = () => {
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const { store, actions } = useContext(Context)
+    //console.log(store.punto_partida);
+    
 
     return (
         <div className="container mt-5">
@@ -21,21 +22,25 @@ const agregar = () => {
                                         <div className="form-row">
                                             <div className="col-md-6 mb-3">
                                                 <label for="validationDefault01">Dirección del Punto de Partida</label>
-                                                <input type="text" className="form-control" id="validationDefault01" required onChange={e => actions.handleChange(e)} />
+                                                <input type="text" className="form-control" id="validationDefault01" required 
+                                                value={store.punto_partida} onChange={e => actions.handleChange(e)} />
                                             </div>
                                             <div className="col-md-6 mb-3">
                                                 <label for="validationDefault02">Dirección del punto de término</label>
-                                                <input type="text" className="form-control" id="validationDefault01" required onChange={e => actions.handleChange(e)} />
+                                                <input type="text" className="form-control" id="validationDefault01" required 
+                                                onChange={e => actions.handleChange(e)} />
                                             </div>
                                         </div>
                                         <div className="form-row">
                                             <div className="col-md-6 mb-3">
                                                 <label for="validationDefault03">Nombre</label>
-                                                <input type="text" className="form-control" id="validationDefault03" required onChange={e => actions.handleChange(e)} />
+                                                <input type="text" className="form-control" id="validationDefault03" 
+                                                required onChange={e => actions.handleChange(e)} />
                                             </div>
                                             <div className="col-md-3 mb-3">
                                                 <label for="validationDefault04">Medio de transporte</label>
-                                                <select className="custom-select" id="validationDefault04" required onChange={e => actions.handleChange(e)}>
+                                                <select className="custom-select" id="validationDefault04" required 
+                                                onChange={e => actions.handleChange(e)}>
                                                     <option selected disabled value="">Seleccione</option>
                                                     {store.transporte.length > 0 &&
                                             store.transporte.map((item, i) => {
@@ -49,7 +54,8 @@ const agregar = () => {
                                             </div>
                                             <div className="col-md-3 mb-3">
                                                 <label for="validationDefault05">Cantidad de Km</label>
-                                                <input type="text" className="form-control" id="validationDefault05" required onChange={e => actions.handleChange(e)}/>
+                                                <input type="text" className="form-control" id="validationDefault05" required 
+                                                onChange={e => actions.handleChange(e)}/>
                                             </div>
                                         </div>
                                         <div className="row">
@@ -80,4 +86,4 @@ const agregar = () => {
     );
 }
 
-export default agregar;
+export default Agregar;
