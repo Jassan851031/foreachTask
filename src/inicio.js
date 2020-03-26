@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 class Inicio extends Component {
 
-  
 
     render() {
         return (

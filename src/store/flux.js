@@ -2,14 +2,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			path: 'http://localhost:5000',
-			punto_partida: "",
-			punto_termino: "",
-			km: "",
-			nombre: "",
+			partida: '',
+			termino: '',
+			km: '',
+			nombre: '',
 			ida_vuelta: false,
+			transp_actual: 0,
 			transporte: [],
 			resumen: []
 		},
+
 		actions: {
 
 			getResumen: () => {
@@ -19,7 +21,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => {
 						setStore({ resumen: data });
 						//console.log(data);
-						//console.log(store.resumen);
+
 					})
 					.catch(err => console.log(err));
 			},
@@ -37,25 +39,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ transporte: data });
 						//console.log('wewe');
                     })
-			},
-			
-			handleChange: e => {
-				setStore({
-					[e.target.name]: e.target.value
-				});
-			},
+				},
+				
+				handleChange: e => {
+					setStore({
+						[e.target.name]: e.target.value
+					});
+				},
 
 			addViaje: () => {
 				const store = getStore();
 				const data = {
-					punto_partida: store.punto_partida,
-					punto_termino: store.punto_termino,
-					tipo_transporte: store.tipo_transporte,
-					km: store.km,
-					nombre: store.nombre,
-					ida_vuelta: store.ida_vuelta
+					punto_partida: store.partida,
+					punto_termino: store.termino,
+					id_transporte: store.transp_actual,
+					distancia_km: store.km,
+					id_usuario: store.nombre,
+					viaje_redondo: store.ida_vuelta
 				}
-				fetch(store.path + '/agregar-viaje', {
+				
+				fetch('http://localhost:5000/agregar-viaje', {
 					method: 'POST',
 					body: JSON.stringify(data),
 					headers: {
@@ -64,15 +67,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				.then(resp => resp.json())
 				.then(() => {
+					console.log('wewe');
 					setStore({
-						punto_partida: '',
-						punto_termino: '',
-						tipo_transporte: '',
+						partida: '',
+						termino: '',
+						transp_actual: '',
 						km: '',
 						nombre: '',
 						ida_vuelta: '',
 					});
-					//console.log('wewe');
 					//getActions().getResumen();
 					})
 			},

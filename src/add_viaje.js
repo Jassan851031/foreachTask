@@ -5,8 +5,12 @@ const Agregar = () => {
 
     const { store, actions } = useContext(Context)
     //console.log(store.punto_partida);
-    
 
+    // let d = document.getElementById('validationDefault01');
+    // store.punto_partida = d.value;
+    //console.log(store);
+
+    
     return (
         <div className="container mt-5">
             <div className="row">
@@ -22,24 +26,27 @@ const Agregar = () => {
                                         <div className="form-row">
                                             <div className="col-md-6 mb-3">
                                                 <label for="validationDefault01">Dirección del Punto de Partida</label>
-                                                <input type="text" className="form-control" id="validationDefault01" required 
-                                                value={store.punto_partida} onChange={e => actions.handleChange(e)} />
+                                                <input type="text" className="form-control" id='validationDefault01' name='partida' 
+                                                value={store.partida}
+                                                onChange={e => actions.handleChange(e)} />
                                             </div>
                                             <div className="col-md-6 mb-3">
                                                 <label for="validationDefault02">Dirección del punto de término</label>
-                                                <input type="text" className="form-control" id="validationDefault01" required 
+                                                <input type="text" className="form-control" id='validationDefault02' name='termino' required
+                                                value={store.termino} 
                                                 onChange={e => actions.handleChange(e)} />
                                             </div>
                                         </div>
                                         <div className="form-row">
                                             <div className="col-md-6 mb-3">
                                                 <label for="validationDefault03">Nombre</label>
-                                                <input type="text" className="form-control" id="validationDefault03" 
-                                                required onChange={e => actions.handleChange(e)} />
+                                                <input type="text" className="form-control" id='validationDefault03' name='nombre' required
+                                                value={store.nombre} 
+                                                onChange={e => actions.handleChange(e)} />
                                             </div>
                                             <div className="col-md-3 mb-3">
                                                 <label for="validationDefault04">Medio de transporte</label>
-                                                <select className="custom-select" id="validationDefault04" required 
+                                                <select className="custom-select" id='validationDefault04'  required 
                                                 onChange={e => actions.handleChange(e)}>
                                                     <option selected disabled value="">Seleccione</option>
                                                     {store.transporte.length > 0 &&
@@ -54,7 +61,8 @@ const Agregar = () => {
                                             </div>
                                             <div className="col-md-3 mb-3">
                                                 <label for="validationDefault05">Cantidad de Km</label>
-                                                <input type="text" className="form-control" id="validationDefault05" required 
+                                                <input type="text" className="form-control" id='validationDefault05' name='km' required 
+                                                value={store.km} 
                                                 onChange={e => actions.handleChange(e)}/>
                                             </div>
                                         </div>
