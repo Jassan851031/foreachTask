@@ -11,10 +11,8 @@ const App = () => {
         <BrowserRouter>
             <Switch>
                 <Route exact path="/" component={inicio} />
-
                 <Route exact path="/agregar" component={add_viaje} />
                 <Route exact path="/resumen" component={resumen} />
-               
             </Switch>
         </BrowserRouter>
     )

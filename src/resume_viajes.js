@@ -34,7 +34,7 @@ const Resumen = () => {
                                 <td>{item.id_transporte}</td>
                                 <td>{item.distancia_km}</td>
                                 <td>{item.nombre_usuario}</td>
-                                <td>{item.viaje_redondo}</td>
+                                <td>{item.viaje_redondo? "Si" : "No"}</td>
                                 <td>{item.emision}</td>
                             </tr>
                         )
