@@ -1,11 +1,8 @@
 import React, { useContext } from 'react';
 import { Context } from './store/appContext';
 
-
-
 const Resumen = () => {
     const { store } = useContext(Context);
-    //console.log(store.resumen.length)
 
     return (
         <div className="container mt-5">
